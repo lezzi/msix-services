@@ -36,11 +36,19 @@ namespace DesktopClient
             var bundlePath = filePicker.FileName;
             var packageManager = new PackageManager();
             
+            // Scenario #1
             await packageManager.AddPackageByUriAsync(new Uri(bundlePath, UriKind.Absolute), new AddPackageOptions
             {
                 DeferRegistrationWhenPackagesAreInUse = true,
                 ForceTargetAppShutdown = false
             });
+            
+            // Scenario #2
+            // await packageManager.AddPackageByUriAsync(new Uri(bundlePath, UriKind.Absolute), new AddPackageOptions
+            // {
+            //     DeferRegistrationWhenPackagesAreInUse = false,
+            //     ForceTargetAppShutdown = true
+            // });
 
             ResultTextBlock.Text = "Ready to restart";
         }
